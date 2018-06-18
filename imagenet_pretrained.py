@@ -62,13 +62,13 @@ model = Network(weights = "imagenet")
 # 'inputShape', the required input dimensions for the ImageNet pre-traidned network
 
 print("[INFO] loading and pre-processing image...")
-image = load_img(args["image"], target_size = inputShape)
+image = load_img(args["image"], target_size = inputShape) # load_img(path, grayscale=False, target_size=None, interpolation='nearest')
 image = img_to_array(image)
 
 # our input image is now represented as a NumPy aray of shape (inputShape[0], inputShape[1], 3)
 # however we need to expand the dimension by making the shape (1, inputShape[0], inputShape[1], 3)
 # so we can pass it though the network
-
+# expand_dims(a, axis): Insert a new axis that will appear at the axis position in the expanded array shape
 image  = np.expand_dims(image, axis = 0)
 
 # pre-process the image using the appropiate function based on the model that has been loaded
@@ -93,3 +93,4 @@ cv2.putText(orig, "label: {}".format(label), (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
 	0.8, (0, 255, 0), 2)
 cv2.imshow("Classification", orig)
 cv2.waitKey(0)
+cv2.destroyAllWindows()
