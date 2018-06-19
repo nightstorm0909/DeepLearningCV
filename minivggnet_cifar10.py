@@ -20,7 +20,7 @@ args = vars(ap.parse_args())
 
 # load the training and testing data then scale it into the range [0, 1]
 
-print('[INFO] loaing CIFAR-10 data...')
+print('[INFO] loading CIFAR-10 data...')
 ((trainX, trainY), (testX, testY)) = cifar10.load_data()
 trainX = trainX.astype('float') / 255.0
 testX = testX.astype('float') / 255.0
